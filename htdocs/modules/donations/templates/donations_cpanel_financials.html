@@ -1,0 +1,31 @@
+<h1><{$smarty.const._DNS_AM_DONATIONS_H1}></h1>
+<p><{$smarty.const._DNS_AM_DONATIONS_P}></p>
+<div style="float:right;"><{$pagenav}></div>
+<table>
+	<tr class="head">
+		<th><{$amount_th}></th>
+		<th><{$currency_th}></th>
+		<th><{$realname_th}></th>
+		<th><{$state_th}></th>
+		<th><{$country_th}></th>
+		<th><{$email_th}></th>
+		<th><{$created_th}></th>
+		<th><{$smarty.const._DNS_AM_TH_ACTIONS}></th>
+	</tr>
+	<{foreach item=donation from=$donations}>
+	<tr class="<{cycle values="even,odd"}>">
+		<td align='center'><{$donation.amount}></td>
+		<td align='center'><{$donation.currency}></td>
+		<td align='center'><{$donation.realname}></td>
+		<td align='center'><{$donation.state}></td>
+		<td align='center'><{$donation.country}></td>
+		<td align='center'><a href="mailto:<{$donation.email}>?subject=<{$smarty.const._DNS_AM_EMAIL_SUBJECT}>"><{$donation.email}></a></td>
+		<td align='center'><{$donation.created_datetime}></td>
+		<td align='center'><{if $donation.uid}><a href="<{$xoops_url}>/userinfo.php?uid=<{$donation.uid}>"><{$smarty.const._DNS_AM_VIEW_USERACCOUNT}></a>&nbsp;|&nbsp;<{/if}><a href="<{$xoops_url}>/modules/xpayment/admin/index.php?op=invoices&fct=view&iid=<{$donation.iid}>"><{$smarty.const._DNS_AM_VIEW_INVOICE}></a>&nbsp;|&nbsp;<a href="<{$xoops_url}>/modules/xpayment/admin/index.php?op=transactions&fct=list&iid=<{$donation.iid}>"><{$smarty.const._DNS_AM_VIEW_TRANSACTION}></a></td>
+	</tr>
+	<{/foreach}>
+	<tr class="foot">
+		<td colspan="8">&nbsp;</td>
+	</tr>
+</table>
+</form>

@@ -1,0 +1,25 @@
+<h1><{$smarty.const._DNS_MF_DONATION_H1}></h1>
+<p><{$target}></p>
+<table>
+	<tr class="head">
+		<th><{$smarty.const._DNS_MF_TH_AMOUNT}></th>
+		<th><{$smarty.const._DNS_MF_TH_CURRENCY}></th>
+		<th><{$smarty.const._DNS_MF_TH_REALNAME}></th>
+		<th><{$smarty.const._DNS_MF_TH_STATE}></th>
+		<th><{$smarty.const._DNS_MF_TH_COUNTRY}></th>
+		<th><{$smarty.const._DNS_MF_TH_CREATED}></th>
+	</tr>
+	<{foreach item=donation from=$donations}>
+	<tr class="<{cycle values="even,odd"}>">
+		<td align='center'><{$donation.amount}></td>
+		<td align='center'><{$donation.currency}></td>
+		<td align='center'><{$donation.realname}></td>
+		<td align='center'><{$donation.state}></td>
+		<td align='center'><{$donation.country}></td>
+		<td align='center'><{$donation.created_datetime}></td>
+	</tr>
+	<{/foreach}>
+	<tr class="foot">
+		<td colspan="6">&nbsp;</td>
+	</tr>
+</table>

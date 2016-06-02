@@ -1,0 +1,33 @@
+<form action="<{$xoops_url}>/modules/xpayment/" method="post">
+<!-- This is the header of the invoice -->
+<input type="hidden" name="op" value="createinvoice">
+<input type="hidden" name="plugin" value="donations">
+<input type="hidden" name="donation" value="1">
+<input type="hidden" name="drawfor" value="<{$block.sitename}>"><br/>
+<{if $xoops_isuser}>
+<label><{$smarty.const._DNS_BK_YOURNAME}>&nbsp;<{$block.user.name}> (<{$block.user.uname}>)</label><br/>
+<label><{$smarty.const._DNS_BK_YOUREMAIL}>&nbsp;<{$block.user.email}></label>
+<input type="hidden" name="drawto" value="<{$block.user.name}> (<{$block.user.uname}>)">
+<input type="hidden" name="drawto_email" value="<{$block.user.email}>">
+<input type="hidden" name="key" value="">
+<{else}>
+<label><{$smarty.const._DNS_BK_YOURNAME}>&nbsp;</label><input type="text" name="drawto" value="" size="15" maxlen="128"><br/>
+<label><{$smarty.const._DNS_BK_YOUREMAIL}>&nbsp;</label><input type="text" name="drawto_email" value="" size="15" maxlen="128"><br/>
+<input type="hidden" name="key" value="">
+<{/if}>
+<input type="hidden" name="currency" value="<{$block.currency}>">
+<input type="hidden" name="weight_unit" value="kgs">
+<!-- Example Item A -->
+<input type="hidden" name="item[A][cat]" value="<{$smarty.const._DNS_BK_DONATIONCAT}>">
+<input type="hidden" name="item[A][name]" value="<{$smarty.const._DNS_BK_DONATION}>">
+<{$block.price}>
+<input type="hidden" name="item[A][quantity]" value="1">
+<input type="hidden" name="item[A][shipping]" value="0.00">
+<input type="hidden" name="item[A][handling]" value="0.00">
+<input type="hidden" name="item[A][weight]" value="0.00">
+<input type="hidden" name="item[A][tax]" value="0">
+<!-- This is the footer of the invoice -->
+<input type="hidden" name="return" value="<{$xoops_url}>/modules/donations/success.php">
+<input type="hidden" name="cancel" value="<{$xoops_url}>/modules/donations/cancel.php">
+<input type="submit" name='submit' value="<{$smarty.const._DNS_BK_PURCHASE}>" />
+</form>
